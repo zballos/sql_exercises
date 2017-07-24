@@ -35,3 +35,10 @@ SELECT value, observation FROM finances WHERE my_date >= '30-ABR-2016';
 
 # select all values and observations with date equal or greater than 30/04/2016 and less or equal 30/12/2016:
 SELECT value, observation FROM finances WHERE my_date >= '30-ABR-2016' AND my_date <= '30-DEZ-2016';
+
+# Others consults:
+SELECT * FROM finances WHERE value >= 25 AND value <= 50 AND observation LIKE 'RESTAURANT%'; 
+SELECT * FROM finances WHERE received = '1';
+SELECT * FROM finances WHERE received = '0';
+
+# ATTEMPTION! Oracle database not accept boolean type values. 
