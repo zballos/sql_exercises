@@ -1,6 +1,8 @@
 # Oracle 12c
 # Before all, initialize with the command 'sqlplus' for entry in Oracle Database.
 
+# Exercises about install oracle database 12c, connect with new user, creating table and executing selects in table created.
+
 # Create a table 'finances' with attributes: value, my_date, observation and received.
 CREATE TABLE finances (value, my_date, observation, received);
 
@@ -42,3 +44,8 @@ SELECT * FROM finances WHERE received = '1';
 SELECT * FROM finances WHERE received = '0';
 
 # ATTEMPTION! Oracle database not accept boolean type values. 
+
+# Operator OR examples:
+SELECT * FROM finances WHERE value > 5000 OR received = '1';
+SELECT * FROM finances WHERE (value >= 1000 AND value <= 3000) OR value > 5000;  
+SELECT * FROM finances WHERE (value > 400 AND value < 2000) OR value > 8000; 
