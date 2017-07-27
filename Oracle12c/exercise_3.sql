@@ -19,7 +19,7 @@ DELETE FROM finances WHERE observation IS NULL;
 # 3. Alter the finances table for the observation not receive null values.
 ALTER TABLE finances MODIFY (observation VARCHAR2 (30) NOT NULL);
 
-# 4. Alter the finances table for that the 'received' be default zero, after insert new finances without received value
+# 4. Alter the finances table for that the 'received' be zero by default, after, insert new finances without received value.
 ALTER TABLE finances MODIFY (received char default '0' check (received in (0, 1)));
 INSERT INTO finances (id, value, my_date, observation) VALUES (id_seq.nextval, 15.5, '27-JUL-2017', 'new finance');
 
@@ -33,3 +33,15 @@ UPDATE finances SET payment_type = 'MONEY' WHERE payment_type IS NULL;
 
 # 7. Rename column my_date to payment_date
 ALTER TABLE finances RENAME COLUMN my_date TO payment_date;
+
+# Table updated
+/*
+CREATE TABLE finances (
+	id NUMBER PRIMARY KEY,
+	value NUMBER,
+	payment_date DATE,
+	observation VARCHAR2(30) NOT NULL,
+	received CHAR DEFAULT '0' CHECK (received IN (0, 1)),
+	payment_type VARCHAR2(10) CHECK (payment_type IN ('BILLET', 'MONEY', 'CARD'))
+);
+*/
