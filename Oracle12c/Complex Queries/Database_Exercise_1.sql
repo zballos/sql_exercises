@@ -62,4 +62,10 @@ CREATE SEQUENCE id_benefits_seq;
 CREATE SEQUENCE id_employees_benefits_seq;
 
 -- Create all foreign keys
+ALTER TABLE companies_departments ADD FOREIGN KEY (company_id) REFERENCES companies(id);
+ALTER TABLE companies_departments ADD FOREIGN KEY (department_id) REFERENCES departments(id);
+ALTER TABLE employees ADD FOREIGN KEY (role_id) REFERENCES roles(id);
+ALTER TABLE employees ADD FOREIGN KEY (department_id) REFERENCES departments(id);
+ALTER TABLE employees_benefits ADD FOREIGN KEY (employee_id) REFERENCES employees(id);
+ALTER TABLE employees_benefits ADD FOREIGN KEY (benefit_id) REFERENCES benefits(id);
 
