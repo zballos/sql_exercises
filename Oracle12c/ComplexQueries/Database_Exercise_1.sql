@@ -1,10 +1,10 @@
 -- Delete all tables, if exists
 DROP TABLE companies_departments;
-DROP TABLE companies;
-DROP TABLE departments;
-DROP TABLE roles;
 DROP TABLE employees_benefits;
+DROP TABLE companies;
 DROP TABLE employees;
+DROP TABLE roles;
+DROP TABLE departments;
 DROP TABLE benefits;
 
 -- Create tables
@@ -41,7 +41,7 @@ CREATE TABLE employees (
 
 CREATE TABLE benefits (
     id NUMBER PRIMARY KEY,
-    name VARCHAR2(70) DEFAULT '' NOT NULL,
+    name VARCHAR2(70) DEFAULT '' NOT NULL
 );
 
 CREATE TABLE employees_benefits (
