@@ -36,7 +36,8 @@ CREATE TABLE employees (
     id NUMBER PRIMARY KEY,
     name VARCHAR2(70) DEFAULT '' NOT NULL,
     age NUMBER NOT NULL,
-    role_id NUMBER NOT NULL
+    role_id NUMBER NOT NULL,
+    company_id NUMBER NOT NULL
 );
 
 CREATE TABLE benefits (
@@ -65,6 +66,7 @@ CREATE SEQUENCE id_employees_benefits_seq;
 ALTER TABLE companies_departments ADD FOREIGN KEY (company_id) REFERENCES companies(id);
 ALTER TABLE companies_departments ADD FOREIGN KEY (department_id) REFERENCES departments(id);
 ALTER TABLE employees ADD FOREIGN KEY (role_id) REFERENCES roles(id);
+ALTER TABLE employees ADD FOREIGN KEY (company_id) REFERENCES companies(id);
 ALTER TABLE roles ADD FOREIGN KEY (department_id) REFERENCES departments(id);
 ALTER TABLE employees_benefits ADD FOREIGN KEY (employee_id) REFERENCES employees(id);
 ALTER TABLE employees_benefits ADD FOREIGN KEY (benefit_id) REFERENCES benefits(id);
@@ -139,41 +141,41 @@ INSERT INTO companies_departments (id,company_id,department_id,active) VALUES (2
 INSERT INTO companies_departments (id,company_id,department_id,active) VALUES (30,10,3,1);
 
 -- employees
-INSERT INTO employees (id, name, age, role_id) VALUES (1,'Devin B. Morrow',27,1);
-INSERT INTO employees (id, name, age, role_id) VALUES (2,'Clark G. Barlow',37,1);
-INSERT INTO employees (id, name, age, role_id) VALUES (3,'Cameron V. Wade',21,1);
-INSERT INTO employees (id, name, age, role_id) VALUES (4,'Mannix O. Wheeler',28,1);
-INSERT INTO employees (id, name, age, role_id) VALUES (5,'Hyacinth Q. Moses',36,1);
-INSERT INTO employees (id, name, age, role_id) VALUES (6,'Kristen X. Petersen',21,1);
-INSERT INTO employees (id, name, age, role_id) VALUES (7,'Dana R. Skinner',19,3);
-INSERT INTO employees (id, name, age, role_id) VALUES (8,'Chancellor T. Camacho',23,3);
-INSERT INTO employees (id, name, age, role_id) VALUES (9,'Britanney E. Callahan',30,3);
-INSERT INTO employees (id, name, age, role_id) VALUES (10,'Ryan M. Wilkinson',39,5);
-INSERT INTO employees (id, name, age, role_id) VALUES (11,'Cody D. Graham',39,5);
-INSERT INTO employees (id, name, age, role_id) VALUES (12,'Veronica T. Hancock',26,5);
-INSERT INTO employees (id, name, age, role_id) VALUES (13,'Carson C. Elliott',25,6);
-INSERT INTO employees (id, name, age, role_id) VALUES (14,'Justin U. Ward',23,6);
-INSERT INTO employees (id, name, age, role_id) VALUES (15,'Russell V. Banks',29,6);
-INSERT INTO employees (id, name, age, role_id) VALUES (16,'Mari R. English',36,10);
-INSERT INTO employees (id, name, age, role_id) VALUES (17,'Giacomo G. Padilla',41,10);
-INSERT INTO employees (id, name, age, role_id) VALUES (18,'Andrew L. Kennedy',24,4);
-INSERT INTO employees (id, name, age, role_id) VALUES (19,'Tamara N. Gates',24,4);
-INSERT INTO employees (id, name, age, role_id) VALUES (20,'Risa W. Jenkins',30,4);
-INSERT INTO employees (id, name, age, role_id) VALUES (21,'Leigh C. Pitts',30,7);
-INSERT INTO employees (id, name, age, role_id) VALUES (22,'Jonas O. Mcpherson',28,7);
-INSERT INTO employees (id, name, age, role_id) VALUES (23,'Charity J. Wall',29,7);
-INSERT INTO employees (id, name, age, role_id) VALUES (24,'Abigail O. Atkins',40,8);
-INSERT INTO employees (id, name, age, role_id) VALUES (25,'Lilah D. Taylor',19,8);
-INSERT INTO employees (id, name, age, role_id) VALUES (26,'Peter N. Sheppard',26,8);
-INSERT INTO employees (id, name, age, role_id) VALUES (27,'Randall T. Graham',42,4);
-INSERT INTO employees (id, name, age, role_id) VALUES (28,'Maxwell E. Moon',33,4);
-INSERT INTO employees (id, name, age, role_id) VALUES (29,'Zephania H. Owens',31,4);
-INSERT INTO employees (id, name, age, role_id) VALUES (30,'Leilani J. Shields',42,9);
-INSERT INTO employees (id, name, age, role_id) VALUES (31,'Karina D. Fowler',34,9);
-INSERT INTO employees (id, name, age, role_id) VALUES (32,'Miriam V. Bryant',38,9);
-INSERT INTO employees (id, name, age, role_id) VALUES (33,'Lois I. Cruz',19,10);
-INSERT INTO employees (id, name, age, role_id) VALUES (34,'Paki I. Duke',24,10);
-INSERT INTO employees (id, name, age, role_id) VALUES (35,'Buckminster E. Jarvis',23,10);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (1,'Devin B. Morrow',27,1, 1);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (2,'Clark G. Barlow',37,1, 2);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (3,'Cameron V. Wade',21,1, 3);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (4,'Mannix O. Wheeler',28,1, 4);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (5,'Hyacinth Q. Moses',36,1, 5);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (6,'Kristen X. Petersen',21,1, 6);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (7,'Dana R. Skinner',19,3, 7);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (8,'Chancellor T. Camacho',23,3, 8);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (9,'Britanney E. Callahan',30,3, 9);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (10,'Ryan M. Wilkinson',39,5, 10);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (11,'Cody D. Graham',39,5, 1);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (12,'Veronica T. Hancock',26,5, 2);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (13,'Carson C. Elliott',25,6, 3);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (14,'Justin U. Ward',23,6, 4);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (15,'Russell V. Banks',29,6, 5);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (16,'Mari R. English',36,10, 6);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (17,'Giacomo G. Padilla',41,10, 7);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (18,'Andrew L. Kennedy',24,4, 8);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (19,'Tamara N. Gates',24,4, 9);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (20,'Risa W. Jenkins',30,4, 10);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (21,'Leigh C. Pitts',30,7, 1);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (22,'Jonas O. Mcpherson',28,7, 2);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (23,'Charity J. Wall',29,7, 3);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (24,'Abigail O. Atkins',40,8, 4);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (25,'Lilah D. Taylor',19,8, 5);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (26,'Peter N. Sheppard',26,8, 6);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (27,'Randall T. Graham',42,4, 7);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (28,'Maxwell E. Moon',33,4, 8);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (29,'Zephania H. Owens',31,4, 9);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (30,'Leilani J. Shields',42,9, 10);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (31,'Karina D. Fowler',34,9, 1);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (32,'Miriam V. Bryant',38,9, 2);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (33,'Lois I. Cruz',19,10, 3);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (34,'Paki I. Duke',24,10, 4);
+INSERT INTO employees (id, name, age, role_id, company_id) VALUES (35,'Buckminster E. Jarvis',23,10, 5);
 
 -- employees_benefits
 insert into employees_benefits (id, employee_id, benefit_id, benefit_value, received_date) values (1, 10, 1, 400.0, '05-JAN-2017');
