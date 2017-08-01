@@ -23,10 +23,11 @@ select d.name, count(e.id)
  group by d.name;
 
 -- 3. Show employee, benefit name and total value of benefits by employees in 2017
-select e.name, b.name, sum(eb.benefit_value)
+select e.name as employee, b.name as benefit, sum(eb.benefit_value) as total_value
     from employees e
     join employees_benefits eb on (eb.employee_id = e.id)
     join benefits b on (b.id = eb.benefit_id)
+    where eb.received_date between '01-JAN-2017' and '31-DEZ-2017'
  group by e.name, b.name;
 
 -- 4. Show company name, amount and total value of benefits after JAN-2015
@@ -35,7 +36,7 @@ select c.name, count(eb.id) as amount, sum(eb.benefit_value) as total_value
     join companies c on (c.id = e.company_id)
     join employees_benefits eb on (eb.employee_id = e.id)
     join benefits b on (b.id = eb.benefit_id)
-    where eb.received_date between '01-JAN-2017' and '31-DEZ-2017'
+    where eb.received_date >= '01-JAN-2016'
  group by c.name;
 
 -- 5. Calculate the average of benefits of all employees
