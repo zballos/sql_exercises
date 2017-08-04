@@ -35,3 +35,14 @@ SELECT observations, value FROM purchases WHERE purchase_date >= '2008-12-15'; -
 
 -- 2. Repeat last exercise, but show and order result by date
 SELECT observations, value, purchase_date FROM purchases WHERE purchase_date >= '2008-12-15' ORDER BY purchase_date ASC;
+
+-- 3. Select all purchases that value between 100 and 1000
+SELECT observations, value, purchase_date FROM purchases WHERE value BETWEEN 100 AND 1000 ORDER BY purchase_date ASC;
+-- other form
+SELECT observations, value, purchase_date FROM purchases WHERE value >= 100 AND value <= 1000 ORDER BY purchase_date ASC;
+
+-- 4. Select all purchases between 01/01/2009 and 01/01/2010
+SELECT * FROM purchases WHERE purchase_date BETWEEN '2009-01-01' AND '2010-01-01'; 
+
+-- 5. Select purchases that value greater than 15 and less than 35, and observations starts with LANCHONETE
+SELECT * FROM purchases WHERE value >= 15 AND value <= 35 AND observations LIKE 'LANCHONETE%';
