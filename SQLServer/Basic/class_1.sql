@@ -1,18 +1,29 @@
 -- All instructions was executed in Microsoft SQL Server Management Studio
 -- Start creating a new database 
-create database purchasing_control;
+CREATE DATABASE purchasing_control;
 
 -- set what the database you use
-use purchasing_control;
+USE purchasing_control;
 
 -- create table purchases
-create table purchases(
-	id int identity primary key not null,
-	value decimal (12,2),
-	purchase_date date,
-	observations nvarchar (200),
-	received bit
+CREATE TABLE purchases(
+	id INT IDENTITY PRIMARY KEY NOT NULL,
+	value DECIMAL(12,2) NULL,
+	purchase_date DATE NULL,
+	observations NVARCHAR (200) NULL,
+	received BIT
 );
+
+-- Observations:
+-- nvarchar -> column type of text in SQL Server, similar with varchar2 in oracle
 
 -- If you want to see the description of purchases table, or in other table, execute:
 -- sp_help purchases;
+
+-- test insert, execute:
+INSERT INTO purchases (value, purchase_date, observations, received)
+VALUES (200.0, '2017-08-04', 'Material de Escritório', 1);
+
+-- after
+SELECT observations, value FROM purchases;
+SELECT * FROM purchases;
