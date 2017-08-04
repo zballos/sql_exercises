@@ -27,3 +27,11 @@ VALUES (200.0, '2017-08-04', 'Material de Escritório', 1);
 -- after
 SELECT observations, value FROM purchases;
 SELECT * FROM purchases;
+
+-- Ok, stop here! Before to continue, populate the purchases table with: "class_1-populate_table.sql"
+
+-- 1. Select observations and values in purchases that purchase_date greater or equal than 15/12/2008
+SELECT observations, value FROM purchases WHERE purchase_date >= '2008-12-15'; -- or purchase_date >= '15-12-2008'
+
+-- 2. Repeat last exercise, but show and order result by date
+SELECT observations, value, purchase_date FROM purchases WHERE purchase_date >= '2008-12-15' ORDER BY purchase_date ASC;
