@@ -46,3 +46,14 @@ SELECT * FROM purchases WHERE purchase_date BETWEEN '2009-01-01' AND '2010-01-01
 
 -- 5. Select purchases that value greater than 15 and less than 35, and observations starts with LANCHONETE
 SELECT * FROM purchases WHERE value >= 15 AND value <= 35 AND observations LIKE 'LANCHONETE%';
+
+-- 6. Select all received purchases
+SELECT * FROM purchases WHERE received = 1;
+-- or
+SELECT * FROM purchases WHERE received = 'TRUE';
+
+-- 7. Greater than 5000 or received
+SELECT * FROM purchases WHERE received = 'TRUE' OR value >= 5000.0;
+
+-- 8. Greater than 1000 and less than 3000 OR greater than 5000.
+SELECT * FROM purchases WHERE (value >= 1000 OR value <= 3000) OR value >= 5000.0;
