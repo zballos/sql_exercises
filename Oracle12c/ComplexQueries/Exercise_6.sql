@@ -27,3 +27,10 @@ RIGHT JOIN employees_benefits eb ON (eb.benefit_id = b.id)
 RIGHT JOIN employees e ON (eb.employee_id = e.id)
 GROUP BY e.name, b.name, eb.benefit_value
 ORDER BY e.name ASC;
+
+-- 5. Select all employees using LEFT JOIN when benefit id = 1 (Overtime)
+SELECT e.name AS employee, b.name as benefit, eb.benefit_value
+FROM employees e
+LEFT JOIN employees_benefits eb ON (eb.employee_id = e.id)
+LEFT JOIN benefits b ON (eb.benefit_id = b.id) AND b.id = 1
+GROUP BY e.name, b.name, eb.benefit_value;
