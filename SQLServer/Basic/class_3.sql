@@ -31,3 +31,6 @@ VALUES (300, '2009-10-12', 'Compra do dia das crianças', 1);
 
 -- 2. set default 0 in received
 ALTER TABLE purchases ADD DEFAULT '0' FOR received;
+
+INSERT INTO purchases (value, purchase_date, observations)
+VALUES (450.0, '2010-12-01', 'COMPRA DO MÊS');
