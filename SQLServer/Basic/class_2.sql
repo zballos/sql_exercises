@@ -22,3 +22,9 @@ UPDATE purchases SET value = value + 15.0 WHERE purchase_date <= '2010-10-10';
 UPDATE purchases
 SET observations = 'entregue antes de 2011', received = 'TRUE'
 WHERE purchase_date BETWEEN '2009-07-01' AND '2010-07-01'; 
+
+-- 5. Delete purchases between 6/04/2009 and 29/04/2009
+DELETE FROM purchases WHERE purchase_date BETWEEN '2009-04-06' AND '2009-04-29';
+
+-- 6. Select all purchases that value different of 200
+SELECT * FROM purchases WHERE NOT value = 200; 
