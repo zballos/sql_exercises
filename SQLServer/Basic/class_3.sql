@@ -28,3 +28,6 @@ VALUES (300, '2009-10-12', 1);
 -- So, insert with observations
 INSERT INTO purchases (value, purchase_date, observations, received)
 VALUES (300, '2009-10-12', 'Compra do dia das crianças', 1);
+
+-- 2. set default 0 in received
+ALTER TABLE purchases ADD DEFAULT '0' FOR received;
