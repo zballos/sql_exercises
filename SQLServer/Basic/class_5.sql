@@ -26,3 +26,16 @@ ALTER TABLE purchases
 ADD CONSTRAINT FK_Purchases_Buyers_ID 
 FOREIGN KEY (buyer_id)
 REFERENCES buyers (id);
+
+-- 6. Show buyer name, date and value from all purchases that before 10/01/2010, after order by date desc
+SELECT buyers.name, purchases.purchase_date, purchases.value
+FROM purchases
+JOIN buyers ON (buyers.id = purchases.buyer_id)
+WHERE purchases.purchase_date < '2010-01-10'
+ORDER BY purchases.purchase_date DESC; 
+
+-- 7. Show buyer name and total value group by name
+SELECT buyers.name, SUM(purchases.value) AS total
+FROM purchases
+JOIN buyers ON (buyers.id = purchases.buyer_id)
+GROUP BY buyers.name;
