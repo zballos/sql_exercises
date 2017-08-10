@@ -31,3 +31,13 @@ ORDER BY s.name ASC;
     DAY -> part of date, return one day;
     GETDATE() -> Internal function, return actual datetime.
 */
+
+-- 4. Show students that have registration
+SELECT s.name, s.email
+FROM student s
+WHERE EXISTS (
+    SELECT r.id 
+    FROM registration r
+    WHERE r.student_id = s.id
+)
+ORDER BY s.name ASC;
