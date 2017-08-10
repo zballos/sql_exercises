@@ -37,7 +37,7 @@ CREATE TABLE course (
   id int  NOT NULL IDENTITY,
   name nvarchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (id)
-) 
+);
 
 
 
@@ -63,7 +63,7 @@ CREATE TABLE exercise (
   question nvarchar(max) NOT NULL,
   official_answer nvarchar(max) NOT NULL,
   PRIMARY KEY (id)
-) 
+); 
 
 INSERT INTO exercise ( section_id, question, official_answer)
 VALUES
@@ -107,10 +107,10 @@ CREATE TABLE registration (
   id int  NOT NULL IDENTITY,
   student_id int NOT NULL,
   course_id int NOT NULL,
-  reg_date datetime NOT NULL,
-  reg_type nvarchar(20) NOT NULL DEFAULT '',
+  reg_date datetime2 NOT NULL,
+  reg_type nvarchar(20) NOT NULL CHECK (reg_type IN ('PAGA_PF', 'PAGA_PJ', 'PAGA_CHEQUE', 'PAGA_BOLETO')),
   PRIMARY KEY (id)
-) 
+); 
 
 
 INSERT INTO registration (student_id, course_id, reg_date, reg_type)
